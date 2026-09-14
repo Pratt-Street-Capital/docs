@@ -1,0 +1,77 @@
+---
+title: "How to Resolve Claim Rejections and Billing Errors"
+sidebarTitle: "Claim Rejections"
+description: "Identify and fix claim rejections caused by eligibility mismatches, missing fields, coding errors, or duplicate submissions in behavioral health billing."
+---
+
+When a claim runs into trouble, it is important to understand exactly what happened before taking action. A **rejection** and a **denial** are not the same thing — a rejection means the claim was not accepted by the payer's system at all, typically due to a technical or data error, while a denial means the claim was received, reviewed, and declined for a clinical or coverage-related reason. Rejections are usually faster to fix, especially when caught early.
+
+## Common Rejection Types
+
+Understanding the most frequent causes of claim rejections helps you address them quickly and prevent them from recurring.
+
+<CardGroup cols={2}>
+  <Card title="Patient Not Found / Eligibility Issue" icon="user-xmark">
+    The payer cannot match the patient to an active member record. This usually means the name, date of birth, member ID, or insurance group number on the claim does not match what the payer has on file.
+  </Card>
+  <Card title="Invalid NPI or Billing Provider Information" icon="id-card">
+    The rendering or billing provider's NPI is not recognized by the payer, is not enrolled in the payer's system, or does not match the taxonomy code submitted on the claim.
+  </Card>
+  <Card title="Missing Required Fields" icon="file-circle-xmark">
+    The claim is missing mandatory data elements such as date of birth, admission date, diagnosis code, place of service, or referring provider information required by the payer.
+  </Card>
+  <Card title="Duplicate Claim Submitted" icon="copy">
+    The payer's system has already received a claim for the same patient, date of service, and procedure code. Submitting an identical claim before the original is resolved triggers an automatic rejection.
+  </Card>
+  <Card title="Invalid Procedure or Diagnosis Code" icon="code">
+    The procedure code (CPT/HCPCS) or diagnosis code (ICD-10) on the claim is not valid, is not active for the date of service, or is not covered under the patient's benefit plan.
+  </Card>
+</CardGroup>
+
+## Steps to Resolve a Rejected Claim
+
+<Steps>
+  <Step title="Identify the rejection reason">
+    Review the rejection notice or ERA (Electronic Remittance Advice) to find the specific rejection code and message. Payers use standard ANSI X12 codes (e.g., CO-16, PR-96) along with a plain-language description of the issue.
+  </Step>
+  <Step title="Locate the error in the original claim">
+    Pull up the original claim in your billing system and compare the rejected field against your source data — patient demographics, insurance card, provider enrollment records, and charge entry.
+  </Step>
+  <Step title="Correct the error">
+    Make the necessary correction in your billing system. For eligibility issues, re-verify the patient's insurance information directly with the payer or through your eligibility verification tool before resubmitting.
+  </Step>
+  <Step title="Resubmit the corrected claim">
+    Submit the corrected claim as a new claim (not an adjustment) unless the payer specifies otherwise. Include a corrected claim indicator if required by the payer's guidelines.
+  </Step>
+  <Step title="Confirm receipt">
+    Check your clearinghouse or payer portal within 24 to 48 hours to confirm the resubmitted claim has been accepted and is in process.
+  </Step>
+</Steps>
+
+## How to Notify Walker Health of a Rejection
+
+If you notice a rejected claim — whether through your own portal access, a patient inquiry, or an ERA you received — notify Walker Health right away. You can:
+
+- **Submit a support ticket** through your client portal with the claim number, patient name, date of service, and a brief description of the rejection
+- **Email your billing specialist** directly with the rejection details
+- **Call our billing support line** if the rejection is time-sensitive or involves multiple claims
+
+The faster you report it, the faster it can be corrected and resubmitted.
+
+<Tip>
+  Most rejections can be corrected and resubmitted the same day if caught quickly. Early identification is the single most important factor in minimizing the revenue impact of claim rejections.
+</Tip>
+
+## Prevention: Keeping Patient Information Current
+
+Many claim rejections are entirely preventable with good intake and registration practices. To reduce rejections significantly:
+
+- **Verify insurance eligibility at every visit** — not just at intake — using a real-time eligibility check through your EMR or billing system
+- **Collect and confirm insurance card copies** (front and back) at each visit when plan changes are possible
+- **Update patient demographics immediately** when changes are reported — new address, name change, updated subscriber information
+- **Train front desk staff** on what information is required before a claim can be submitted, including the payer-specific fields that are commonly missed
+- **Review provider enrollment status regularly** to ensure all rendering providers are active and enrolled with the payers you bill
+
+<Note>
+  Walker Health performs eligibility verification as part of our standard billing workflow, but the quality and timeliness of that process depends on the accuracy of the patient information your team provides at check-in. Errors at the front desk are the leading cause of preventable rejections.
+</Note>

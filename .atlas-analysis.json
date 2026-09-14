@@ -1,0 +1,108 @@
+{
+  "projectType": "saas",
+  "projectName": "Walker Health Services",
+  "projectDescription": "A revenue cycle management (RCM) platform for behavioral health and residential treatment providers, covering medical billing, utilization review, and credentialing services.",
+  "theme": "almond",
+  "primaryColor": "#ef7025",
+  "lightColor": "#eec9bc",
+  "darkColor": "#4fa1ab",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Help Center",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "pages": [
+              "introduction",
+              "getting-started/onboarding",
+              "getting-started/emr-integration"
+            ]
+          },
+          {
+            "group": "Medical Billing",
+            "pages": [
+              "billing/overview",
+              "billing/claims-submission",
+              "billing/denial-management",
+              "billing/payment-posting"
+            ]
+          },
+          {
+            "group": "Utilization Review",
+            "pages": [
+              "utilization-review/overview",
+              "utilization-review/medical-necessity",
+              "utilization-review/prior-authorization",
+              "utilization-review/case-review"
+            ]
+          },
+          {
+            "group": "Credentialing",
+            "pages": [
+              "credentialing/overview",
+              "credentialing/provider-enrollment",
+              "credentialing/recredentialing"
+            ]
+          },
+          {
+            "group": "Reporting & Insights",
+            "pages": [
+              "reporting/dashboard",
+              "reporting/billing-reports",
+              "reporting/revenue-analytics"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Support",
+        "groups": [
+          {
+            "group": "FAQs",
+            "pages": [
+              "support/faq-billing",
+              "support/faq-utilization-review",
+              "support/faq-credentialing"
+            ]
+          },
+          {
+            "group": "Troubleshooting",
+            "pages": [
+              "support/claim-rejections",
+              "support/authorization-issues",
+              "support/emr-sync-issues"
+            ]
+          },
+          {
+            "group": "Contact & Escalation",
+            "pages": [
+              "support/contact",
+              "support/escalation-process"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "keyFeatures": [
+    "Comprehensive claims submission and denial management",
+    "Utilization review with medical necessity confirmation",
+    "Provider credentialing and re-credentialing management",
+    "EMR system integration and data migration",
+    "Revenue cycle reporting and billing analytics",
+    "Proactive account monitoring and issue detection",
+    "Prior authorization management",
+    "Payment posting and revenue collection"
+  ],
+  "publicApiSurface": [
+    "Client onboarding workflow",
+    "EMR integration process",
+    "Claims submission pipeline",
+    "Denial management workflow",
+    "Utilization review request process",
+    "Provider enrollment and credentialing process",
+    "Billing reports and analytics dashboard",
+    "Contact and support escalation workflow"
+  ]
+}

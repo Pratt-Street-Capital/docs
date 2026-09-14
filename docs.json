@@ -1,0 +1,97 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "name": "Walker Health Services",
+  "theme": "almond",
+  "colors": {
+    "primary": "#ef7025",
+    "light": "#eec9bc",
+    "dark": "#4fa1ab"
+  },
+  "favicon": "/favicon.svg",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Help Center",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "pages": [
+              "introduction",
+              "getting-started/onboarding",
+              "getting-started/emr-integration"
+            ]
+          },
+          {
+            "group": "Medical Billing",
+            "pages": [
+              "billing/overview",
+              "billing/claims-submission",
+              "billing/denial-management",
+              "billing/payment-posting"
+            ]
+          },
+          {
+            "group": "Utilization Review",
+            "pages": [
+              "utilization-review/overview",
+              "utilization-review/medical-necessity",
+              "utilization-review/prior-authorization",
+              "utilization-review/case-review"
+            ]
+          },
+          {
+            "group": "Credentialing",
+            "pages": [
+              "credentialing/overview",
+              "credentialing/provider-enrollment",
+              "credentialing/recredentialing"
+            ]
+          },
+          {
+            "group": "Reporting & Insights",
+            "pages": [
+              "reporting/dashboard",
+              "reporting/billing-reports",
+              "reporting/revenue-analytics"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Support",
+        "groups": [
+          {
+            "group": "FAQs",
+            "pages": [
+              "support/faq-billing",
+              "support/faq-utilization-review",
+              "support/faq-credentialing"
+            ]
+          },
+          {
+            "group": "Troubleshooting",
+            "pages": [
+              "support/claim-rejections",
+              "support/authorization-issues",
+              "support/emr-sync-issues"
+            ]
+          },
+          {
+            "group": "Contact & Escalation",
+            "pages": [
+              "support/contact",
+              "support/escalation-process"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "navbar": {
+    "primary": {
+      "type": "button",
+      "label": "Contact Us",
+      "href": "https://walker.health/contact-us/"
+    }
+  }
+}

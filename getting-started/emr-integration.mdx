@@ -1,0 +1,70 @@
+---
+title: "Connect Your EHR or EMR System to Walker Health Services"
+sidebarTitle: "EMR Integration"
+description: "Learn how Walker Health Services integrates with your EMR to sync billing data, reduce manual entry, and ensure accurate claims submission."
+---
+
+Connecting your Electronic Medical Records (EMR) system to Walker Health Services is a foundational step in enabling a smooth, accurate revenue cycle. By establishing a direct integration between your EMR and our billing platform, we eliminate manual data entry, reduce errors, and ensure that every claim we submit on your behalf is built on complete, up-to-date clinical and demographic information.
+
+## Supported EMR Systems
+
+Walker Health Services works with a wide range of EMR platforms commonly used by behavioral health and residential treatment providers. Our team has experience integrating with the following systems:
+
+- **Kipu Health** — widely used in addiction treatment and residential programs
+- **Netsmart myAvatar** — built for behavioral health, addiction, and IDD organizations
+- **Credible** — cloud-based platform designed for behavioral health agencies
+- **DrChrono** — flexible EHR/practice management platform with robust API support
+- **SimplePractice** — popular among outpatient mental health and therapy practices
+- **Valant** — purpose-built EHR for behavioral health clinicians
+
+<Info>
+  Don't see your EMR listed here? Contact our team at **410.401.5861** or visit [walker.health/contact-us](https://walker.health/contact-us/). We regularly add support for new platforms and can evaluate compatibility with your system.
+</Info>
+
+## Integration Setup Steps
+
+<Steps>
+  <Step title="Identify Your EMR and IT Contact">
+    During onboarding, let your Walker Health Services account manager know which EMR system you use. If your practice has a dedicated IT administrator or EMR vendor contact, share their information so our technical team can coordinate directly.
+  </Step>
+  <Step title="Grant Access & Configure Credentials">
+    You'll provide the necessary credentials or API keys to allow our platform to establish a secure connection with your EMR. Your account manager will guide you through exactly what's needed for your specific system.
+  </Step>
+  <Step title="Test the Data Connection">
+    Our team runs a series of test syncs to confirm that data is flowing correctly between your EMR and our billing platform. We verify that patient records, insurance details, and service data are mapping accurately before going live.
+  </Step>
+  <Step title="Go Live & Monitor Sync Health">
+    Once the connection is validated, your integration goes live. Our team monitors sync activity on an ongoing basis and alerts you to any issues that require attention.
+  </Step>
+</Steps>
+
+## Data That Syncs
+
+When your EMR is connected to Walker Health Services, the following data flows between systems in real time (or on a scheduled basis, depending on your EMR's capabilities):
+
+- **Patient demographics** — name, date of birth, address, contact information
+- **Insurance information** — payer name, member ID, group number, policy details
+- **Service dates & clinical encounters** — session dates, level of care, treating provider
+- **Diagnosis codes (ICD-10)** — primary and secondary diagnoses associated with each encounter
+- **Procedure codes (CPT/HCPCS)** — billable services rendered during each encounter
+
+<Note>
+  All data transmitted between your EMR and Walker Health Services is handled in full compliance with HIPAA regulations. Our platform uses encrypted data transfer protocols and access controls to ensure the security and privacy of your patients' protected health information (PHI) at every stage.
+</Note>
+
+## Troubleshooting Tips
+
+If you notice that data isn't syncing as expected, here are a few things to check before reaching out to support:
+
+<Warning>
+  Do not attempt to manually re-enter clinical records into the billing platform to work around a sync issue. This can result in duplicate claims and billing errors. Contact support to resolve the root cause first.
+</Warning>
+
+- **Verify your credentials haven't expired.** EMR API keys and integration credentials can expire or be revoked after password changes or system updates. Re-confirm your credentials in your EMR's admin settings.
+- **Check your EMR's connection status.** Some systems have a built-in integration or API status page. Confirm the connection shows as active.
+- **Confirm your EMR is on a supported version.** If your EMR was recently updated, it's possible an API change temporarily affected the integration. Notify our team so we can investigate.
+- **Review your payer and insurance field formatting.** Incomplete or incorrectly formatted insurance records in the EMR can prevent certain records from syncing successfully.
+
+<Card title="EMR Sync Issues" icon="gear" href="/support/emr-sync-issues">
+  If you're still experiencing sync problems after checking the steps above, visit our EMR Sync Issues support page for additional troubleshooting guidance or to contact our technical support team.
+</Card>
