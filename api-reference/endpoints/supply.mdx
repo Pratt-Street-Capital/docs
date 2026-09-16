@@ -1,0 +1,132 @@
+---
+title: "GET /v1/supply - Supply and Capacity Metrics"
+sidebarTitle: "GET /supply"
+description: "Query aggregated supply metrics from Trekton. Retrieve bed counts, provider counts, or average rates by geography and facility type."
+---
+
+Trekton derives supply and capacity insights from its facility and pricing datasets. The supply endpoint returns aggregated metrics such as bed counts, provider counts, and average negotiated rates, grouped by geography and facility type. Use this endpoint to analyze market capacity and pricing benchmarks at scale.
+
+## HTTP Request
+
+```http
+GET https://api.trekton.health/v1/supply
+```
+
+## Query Parameters
+
+<ParamField query="metric" type="string" required>
+  The aggregated metric to return. Accepted values: `bed-count`, `provider-count`, `avg-rate`.
+</ParamField>
+
+<ParamField query="geography" type="string">
+  Geographic aggregation level. Accepted values: `state`, `msa`, `county`.
+</ParamField>
+
+<ParamField query="facility_type" type="string">
+  Filter to a specific facility type before aggregation. Accepted values: `hospital`, `psychiatric`, `rehab`, `other`.
+</ParamField>
+
+<ParamField query="cpt" type="string" required={false}>
+  Required when `metric` is `avg-rate`. The CPT or HCPCS code to average negotiated rates over.
+</ParamField>
+
+<ParamField query="limit" default="50" type="integer">
+  Number of results to return per page. Maximum is `500`.
+</ParamField>
+
+<ParamField query="cursor" type="string">
+  Pagination cursor from a previous response's `next_cursor` to fetch the next page of results.
+</ParamField>
+
+## Response Fields
+
+<ResponseField name="results" type="array">
+  Array of aggregated supply metric records.
+
+  <Expandable title="Result object">
+    <ResponseField name="geography_id" type="string">
+      Identifier for the geography (state code, MSA code, or county FIPS).
+    </ResponseField>
+
+    <ResponseField name="geography_name" type="string">
+      Human-readable name for the geography.
+    </ResponseField>
+
+    <ResponseField name="metric" type="string">
+      The metric returned: `bed-count`, `provider-count`, or `avg-rate`.
+    </ResponseField>
+
+    <ResponseField name="value" type="number">
+      The aggregated numeric value for the metric in the specified geography.
+    </ResponseField>
+
+    <ResponseField name="sample_size" type="integer">
+      Number of underlying records included in the aggregation.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="next_cursor" type="string">
+  Pass this value as the `cursor` query parameter to retrieve the next page. Omitted when there are no more results.
+</ResponseField>
+
+## Examples
+
+<CodeGroup>
+
+```bash curl
+curl -G "https://api.trekton.health/v1/supply" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -d "metric=bed-count" \
+  -d "geography=state" \
+  -d "facility_type=hospital" \
+  -d "limit=10"
+```
+
+```python Python
+import requests
+
+url = "https://api.trekton.health/v1/supply"
+headers = {"Authorization": "Bearer YOUR_API_KEY"}
+params = {
+    "metric": "bed-count",
+    "geography": "state",
+    "facility_type": "hospital",
+    "limit": 10
+}
+
+response = requests.get(url, headers=headers, params=params)
+data = response.json()
+print(data)
+```
+
+```javascript JavaScript
+const url = new URL("https://api.trekton.health/v1/supply");
+url.searchParams.set("metric", "bed-count");
+url.searchParams.set("geography", "state");
+url.searchParams.set("facility_type", "hospital");
+url.searchParams.set("limit", "10");
+
+fetch(url, {
+  headers: { Authorization: "Bearer YOUR_API_KEY" }
+})
+  .then((res) => res.json())
+  .then((data) => console.log(data));
+```
+
+```json Response
+{
+  "results": [
+    {
+      "geography_id": "CA",
+      "geography_name": "California",
+      "metric": "bed-count",
+      "value": 75230,
+      "sample_size": 342
+    }
+  ],
+  "next_cursor": "eyJjdXJzb3IiOjEwfQ=="
+}
+```
+
+</CodeGroup>

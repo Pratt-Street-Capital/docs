@@ -1,0 +1,121 @@
+---
+title: "GET /v1/payers - Commercial Payer List"
+sidebarTitle: "GET /payers"
+description: "List commercial payers available in Trekton. Filter by state, market segment, and paginate through payer coverage and last MRF update dates."
+---
+
+Trekton aggregates machine-readable files (MRFs) from commercial health plans required by the Transparency in Coverage rule. The payers endpoint returns the list of payers whose pricing data is available in the platform, along with metadata about their geographic coverage and most recent file ingestion.
+
+## HTTP Request
+
+```http
+GET https://api.trekton.health/v1/payers
+```
+
+## Query Parameters
+
+<ParamField query="state" type="string">
+  Two-letter US state code to limit results to payers with coverage in that state. Example: `TX`.
+</ParamField>
+
+<ParamField query="market" type="string">
+  Market segment filter. Accepted values: `individual`, `group`, `medicare-advantage`.
+</ParamField>
+
+<ParamField query="limit" default="50" type="integer">
+  Number of results to return per page. Maximum is `500`.
+</ParamField>
+
+<ParamField query="cursor" type="string">
+  Pagination cursor from a previous response's `next_cursor` to fetch the next page of results.
+</ParamField>
+
+## Response Fields
+
+<ResponseField name="payers" type="array">
+  Array of payer records.
+
+  <Expandable title="Payer object">
+    <ResponseField name="payer_id" type="string">
+      Trekton identifier for the payer.
+    </ResponseField>
+
+    <ResponseField name="name" type="string">
+      Display name of the commercial payer or health plan.
+    </ResponseField>
+
+    <ResponseField name="states" type="array">
+      List of two-letter state codes where the payer has coverage.
+    </ResponseField>
+
+    <ResponseField name="lines_of_business" type="array">
+      Market segments offered by the payer, such as `individual`, `group`, or `medicare-advantage`.
+    </ResponseField>
+
+    <ResponseField name="last_mrf_update" type="string">
+      ISO 8601 date of the most recent machine-readable file ingested for this payer.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="next_cursor" type="string">
+  Pass this value as the `cursor` query parameter to retrieve the next page. Omitted when there are no more results.
+</ResponseField>
+
+## Examples
+
+<CodeGroup>
+
+```bash curl
+curl -G "https://api.trekton.health/v1/payers" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -d "state=TX" \
+  -d "market=group" \
+  -d "limit=10"
+```
+
+```python Python
+import requests
+
+url = "https://api.trekton.health/v1/payers"
+headers = {"Authorization": "Bearer YOUR_API_KEY"}
+params = {
+    "state": "TX",
+    "market": "group",
+    "limit": 10
+}
+
+response = requests.get(url, headers=headers, params=params)
+data = response.json()
+print(data)
+```
+
+```javascript JavaScript
+const url = new URL("https://api.trekton.health/v1/payers");
+url.searchParams.set("state", "TX");
+url.searchParams.set("market", "group");
+url.searchParams.set("limit", "10");
+
+fetch(url, {
+  headers: { Authorization: "Bearer YOUR_API_KEY" }
+})
+  .then((res) => res.json())
+  .then((data) => console.log(data));
+```
+
+```json Response
+{
+  "payers": [
+    {
+      "payer_id": "payer_xyz789",
+      "name": "Sample Health Network",
+      "states": ["TX", "OK"],
+      "lines_of_business": ["group", "individual"],
+      "last_mrf_update": "2024-06-01"
+    }
+  ],
+  "next_cursor": "eyJjdXJzb3IiOjEwfQ=="
+}
+```
+
+</CodeGroup>

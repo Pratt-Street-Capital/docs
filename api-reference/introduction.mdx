@@ -1,0 +1,55 @@
+---
+title: "Trekton REST API Overview"
+sidebarTitle: "Introduction"
+description: "Learn the base URL, versioning, JSON format, and rate limits for the Trekton REST API, with quick links to authentication, errors, and endpoints."
+---
+
+The Trekton REST API lets you query healthcare pricing, payer, facility, and supply data programmatically. This page covers the API base URL, versioning scheme, request format, and rate limits so you can start integrating in minutes.
+
+## Base URL and versioning
+
+All API requests use the following base URL. The version is included as a path prefix.
+
+```text
+https://api.trekton.health/v1
+```
+
+When Trekton releases a new API version, the prefix changes (for example, `v2`). Version upgrades are announced in advance so you can migrate on your own schedule.
+
+## Request and response format
+
+Trekton accepts and returns JSON. Send `Content-Type: application/json` on POST and PUT requests. All responses are JSON objects unless otherwise noted.
+
+## Rate limits
+
+Trekton limits requests to **1,000 requests per minute per API key**. If you exceed the limit, the API returns HTTP `429 Too Many Requests`. Retry after the number of seconds indicated in the `Retry-After` response header.
+
+## Next steps
+
+Explore the sections below to authenticate, handle errors, and start pulling data.
+
+<CardGroup>
+  <Card title="Authentication" icon="key" href="/api-reference/authentication">
+    Get your API key and learn how to send it with every request.
+  </Card>
+
+  <Card title="Errors" icon="triangle-exclamation" href="/api-reference/errors">
+    Understand standard HTTP error codes and how to handle them.
+  </Card>
+
+  <Card title="Rates endpoint" icon="money-bill" href="/api-reference/endpoints/rates">
+    Query negotiated rates by procedure code, NPI, and TIN.
+  </Card>
+
+  <Card title="Payers endpoint" icon="building" href="/api-reference/endpoints/payers">
+    Browse commercial payer coverage and metadata.
+  </Card>
+
+  <Card title="Facilities endpoint" icon="hospital" href="/api-reference/endpoints/facilities">
+    Search hospitals, psychiatric facilities, and rehab centers.
+  </Card>
+
+  <Card title="Supply endpoint" icon="chart-line" href="/api-reference/endpoints/supply">
+    Retrieve supply and capacity analytics.
+  </Card>
+</CardGroup>

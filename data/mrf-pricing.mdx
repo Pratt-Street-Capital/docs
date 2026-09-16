@@ -1,0 +1,43 @@
+---
+title: "Trekton MRF Pricing Data Ingestion and Coverage"
+sidebarTitle: "MRF Pricing"
+description: "Learn how Trekton ingests Machine-Readable Files under the Transparency in Coverage rule, normalizes negotiated rates by CPT/HCPCS, NPI, and TIN, and refreshes data monthly."
+---
+
+Trekton ingests Machine-Readable Files (MRFs) posted by health plans under the federal Transparency in Coverage rule so you can query negotiated rates without downloading multi-gigabyte JSON files yourself. This page explains what MRF data Trekton collects, how it is normalized, and how often it refreshes.
+
+## What is an MRF
+
+Machine-Readable Files are large JSON files that health plans must publish monthly. Each file contains negotiated rates between a payer and in-network providers for specific procedures. Trekton parses these files and makes the data searchable through its platform and API.
+
+An MRF typically includes:
+
+- **Negotiated rates** by procedure code (CPT/HCPCS)
+- **Provider identifiers** (NPI and TIN)
+- **Place of service** and billing modifiers where applicable
+- **Payer and plan identifiers**
+
+## What Trekton ingests
+
+Trekton collects MRFs from national and regional commercial payers. After ingestion, Trekton normalizes the data to create a consistent queryable dataset.
+
+Normalization steps include:
+
+- **Deduplication**: removing duplicate rate entries across overlapping files
+- **Code standardization**: ensuring CPT and HCPCS codes use consistent formatting
+- **Provider linkage**: mapping NPI and TIN values to Trekton's facility and provider index
+- **Rate validation**: flagging malformed or missing rate records
+
+## Refresh cadence
+
+MRF data refreshes monthly as payers publish new files under the Transparency in Coverage rule. Trekton begins ingestion after files are published and aims to make updated data available within a short processing window.
+
+<Note>
+  MRFs can be hundreds of gigabytes in size. Trekton handles the full download, parsing, and normalization pipeline so you do not need to manage large JSON files on your own infrastructure.
+</Note>
+
+## Coverage scope
+
+Trekton's MRF coverage includes negotiated rate data from commercial health plans across major markets. Coverage spans inpatient, outpatient, and professional services where payers disclose rates in their posted files.
+
+If you need details on which payers are currently supported, see the [Payers](/data/payers) page. For facility-level data, see [Facilities](/data/facilities).

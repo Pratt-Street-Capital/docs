@@ -1,0 +1,52 @@
+---
+title: "Trekton Commercial Payer Coverage and Filtering"
+sidebarTitle: "Payers"
+description: "Explore Trekton's commercial payer dataset including national and regional health plans, available fields per payer, and how to filter by market and line of business."
+---
+
+Trekton aggregates commercial payer data from national and regional health plans so you can compare negotiated rates across markets and lines of business. This page explains what payer information Trekton provides and how to filter it.
+
+## Payer coverage
+
+Trekton covers commercial payers that post Machine-Readable Files under the Transparency in Coverage rule. This includes national carriers operating across multiple states as well as regional plans focused on specific markets.
+
+Coverage includes:
+
+- National commercial payers with broad geographic footprints
+- Regional health plans serving specific states or metropolitan areas
+- Multiple lines of business (commercial, Medicare Advantage, managed Medicaid) where disclosed in payer files
+
+## Fields available per payer
+
+Each payer record in Trekton includes the following fields:
+
+| Field | Description |
+| --- | --- |
+| Payer ID | Unique identifier for the payer in Trekton |
+| Plan name | Commercial name of the health plan |
+| Market | Geographic market or state where the plan operates |
+| LOB | Line of business (commercial, Medicare Advantage, etc.) |
+
+You can filter payer results by market, line of business, or plan name to narrow your analysis.
+
+## How to filter payers
+
+When querying payer data through the Trekton platform or API, use these filters to scope your results:
+
+- **Market**: limit results to a specific state or metropolitan area
+- **LOB**: focus on commercial, Medicare Advantage, or managed Medicaid plans
+- **Plan name**: search for a specific carrier or product name
+
+<CardGroup>
+  <Card title="MRF Pricing" href="/data/mrf-pricing">
+    Learn how Trekton ingests negotiated rates from payer MRFs.
+  </Card>
+
+  <Card title="Facilities" href="/data/facilities">
+    Explore hospital, psychiatric, and rehab facility data linked to payer networks.
+  </Card>
+
+  <Card title="Supply Insights" href="/data/supply-insights">
+    See how payer and facility data combine into market supply analytics.
+  </Card>
+</CardGroup>

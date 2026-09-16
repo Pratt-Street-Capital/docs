@@ -1,0 +1,158 @@
+---
+title: "GET /v1/facilities - Healthcare Facility Search"
+sidebarTitle: "GET /facilities"
+description: "Search hospitals, psychiatric facilities, and rehab centers in Trekton. Filter by facility type, state, NPI, and paginate through provider results."
+---
+
+Trekton's facilities endpoint covers hospitals, psychiatric facilities, rehab centers, and other provider types. Use it to look up facilities by type, geography, or provider identifier, and see which payers have rate data available for each site.
+
+## HTTP Request
+
+```http
+GET https://api.trekton.health/v1/facilities
+```
+
+## Query Parameters
+
+<ParamField query="type" type="string">
+  Filter by facility type. Accepted values: `hospital`, `psychiatric`, `rehab`, `other`.
+</ParamField>
+
+<ParamField query="state" type="string">
+  Two-letter US state code to limit results to facilities in that state. Example: `FL`.
+</ParamField>
+
+<ParamField query="npi" type="string">
+  Filter to a specific provider by its 10-digit National Provider Identifier.
+</ParamField>
+
+<ParamField query="limit" default="50" type="integer">
+  Number of results to return per page. Maximum is `500`.
+</ParamField>
+
+<ParamField query="cursor" type="string">
+  Pagination cursor from a previous response's `next_cursor` to fetch the next page of results.
+</ParamField>
+
+## Response Fields
+
+<ResponseField name="facilities" type="array">
+  Array of facility records.
+
+  <Expandable title="Facility object">
+    <ResponseField name="npi" type="string">
+      National Provider Identifier for the facility.
+    </ResponseField>
+
+    <ResponseField name="tin" type="string">
+      Tax Identification Number for the billing entity.
+    </ResponseField>
+
+    <ResponseField name="name" type="string">
+      Official name of the facility.
+    </ResponseField>
+
+    <ResponseField name="type" type="string">
+      Facility type: `hospital`, `psychiatric`, `rehab`, or `other`.
+    </ResponseField>
+
+    <ResponseField name="address" type="object">
+      Facility address.
+
+      <Expandable title="Address object">
+        <ResponseField name="street" type="string">
+          Street address.
+        </ResponseField>
+
+        <ResponseField name="city" type="string">
+          City name.
+        </ResponseField>
+
+        <ResponseField name="state" type="string">
+          Two-letter state code.
+        </ResponseField>
+
+        <ResponseField name="zip" type="string">
+          ZIP code.
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+
+    <ResponseField name="bed_count" type="integer">
+      Reported bed count for the facility, when available.
+    </ResponseField>
+
+    <ResponseField name="payer_ids" type="array">
+      List of Trekton payer identifiers with negotiated rate data for this facility.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="next_cursor" type="string">
+  Pass this value as the `cursor` query parameter to retrieve the next page. Omitted when there are no more results.
+</ResponseField>
+
+## Examples
+
+<CodeGroup>
+
+```bash curl
+curl -G "https://api.trekton.health/v1/facilities" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -d "type=hospital" \
+  -d "state=FL" \
+  -d "limit=10"
+```
+
+```python Python
+import requests
+
+url = "https://api.trekton.health/v1/facilities"
+headers = {"Authorization": "Bearer YOUR_API_KEY"}
+params = {
+    "type": "hospital",
+    "state": "FL",
+    "limit": 10
+}
+
+response = requests.get(url, headers=headers, params=params)
+data = response.json()
+print(data)
+```
+
+```javascript JavaScript
+const url = new URL("https://api.trekton.health/v1/facilities");
+url.searchParams.set("type", "hospital");
+url.searchParams.set("state", "FL");
+url.searchParams.set("limit", "10");
+
+fetch(url, {
+  headers: { Authorization: "Bearer YOUR_API_KEY" }
+})
+  .then((res) => res.json())
+  .then((data) => console.log(data));
+```
+
+```json Response
+{
+  "facilities": [
+    {
+      "npi": "9876543210",
+      "tin": "98-7654321",
+      "name": "Example Medical Center",
+      "type": "hospital",
+      "address": {
+        "street": "123 Main St",
+        "city": "Miami",
+        "state": "FL",
+        "zip": "33101"
+      },
+      "bed_count": 250,
+      "payer_ids": ["payer_abc123", "payer_xyz789"]
+    }
+  ],
+  "next_cursor": "eyJjdXJzb3IiOjEwfQ=="
+}
+```
+
+</CodeGroup>

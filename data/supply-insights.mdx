@@ -1,0 +1,42 @@
+---
+title: "Trekton Supply and Capacity Market Analytics"
+sidebarTitle: "Supply Insights"
+description: "Discover how Trekton joins facility, payer, and rate data to generate supply and capacity analytics including provider density, bed counts, and pricing spread by geography."
+---
+
+Trekton combines facility attributes, payer networks, and negotiated rate data to produce supply and capacity analytics. These insights help you understand market density, resource availability, and pricing variation across regions and service lines.
+
+## How supply insights work
+
+Trekton joins three core datasets to build supply analytics:
+
+1. **Facility data**: provider locations, facility types, and bed counts
+2. **Payer networks**: which payers contract with which facilities
+3. **Negotiated rates**: pricing by procedure code and geography
+
+By linking these datasets, Trekton can answer questions about market structure that single-source datasets cannot.
+
+## Example analyses
+
+You can use Trekton supply insights to run analyses such as:
+
+- **Psychiatric bed count by MSA**: compare inpatient behavioral health capacity across metropolitan statistical areas to identify underserved markets
+- **Average negotiated rate for CPT 90837 by state**: measure pricing spread for individual psychotherapy sessions across state boundaries
+- **Provider density by county**: count the number of in-network rehab centers per county for a given payer to evaluate network adequacy
+
+These analyses are built from the underlying facility, payer, and rate data rather than pre-computed reports, so you can adjust filters and groupings to match your specific question.
+
+## Using supply insights
+
+You can access supply analytics through the Trekton platform or programmatically via the API. When querying, you typically filter by:
+
+- Geography (state, MSA, or county)
+- Facility type (hospital, psychiatric, rehab)
+- Payer or plan
+- Procedure code (CPT/HCPCS)
+
+<Tip>
+  Combine supply insights with MRF pricing data to correlate capacity constraints with rate variation in the same market.
+</Tip>
+
+For more on the underlying datasets, see [MRF Pricing](/data/mrf-pricing), [Payers](/data/payers), and [Facilities](/data/facilities).

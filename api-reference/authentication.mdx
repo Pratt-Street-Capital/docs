@@ -1,0 +1,62 @@
+---
+title: "Authenticate with the Trekton API"
+sidebarTitle: "Authentication"
+description: "Learn how to obtain a Trekton API key and send authenticated requests using the Authorization Bearer header with curl, Python, and JavaScript."
+---
+
+Trekton authenticates every API request with an API key passed in the `Authorization` header. This page explains how to request a key and shows working examples in curl, Python, and JavaScript.
+
+## Obtain an API key
+
+Trekton API keys are provisioned by Walker Health. To request access, contact the team through the [Walker Health contact page](https://walker.health/contact-us/) or call **410.401.5861**.
+
+Once approved, you receive a key that looks like a random alphanumeric string. Include it in the `Authorization: Bearer YOUR_API_KEY` header on every request.
+
+<Warning>
+  Treat your API key like a password. Do not commit it to source control, expose it in client-side code, or share it in public forums. If you suspect a key is compromised, contact Walker Health immediately to rotate it.
+</Warning>
+
+## Authenticated request examples
+
+The examples below send an authenticated GET request to the Trekton API base URL. Replace `YOUR_API_KEY` with your actual key.
+
+<CodeGroup>
+
+```bash curl
+curl -H "Authorization: Bearer YOUR_API_KEY" \
+     -H "Accept: application/json" \
+     https://api.trekton.health/v1
+```
+
+```python Python
+import requests
+
+url = "https://api.trekton.health/v1"
+headers = {
+    "Authorization": "Bearer YOUR_API_KEY",
+    "Accept": "application/json",
+}
+
+response = requests.get(url, headers=headers)
+print(response.status_code)
+print(response.json())
+```
+
+```javascript JavaScript
+const url = "https://api.trekton.health/v1";
+const headers = {
+  "Authorization": "Bearer YOUR_API_KEY",
+  "Accept": "application/json",
+};
+
+fetch(url, { headers })
+  .then((res) => res.json())
+  .then((data) => console.log(data))
+  .catch((err) => console.error(err));
+```
+
+</CodeGroup>
+
+## Key rotation
+
+If you need to rotate your API key, contact Walker Health at **410.401.5861** or through the [contact page](https://walker.health/contact-us/). After a new key is issued, update your integrations and retire the old key promptly.

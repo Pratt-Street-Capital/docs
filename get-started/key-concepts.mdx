@@ -1,0 +1,43 @@
+---
+title: "Key Concepts for Trekton Healthcare Data"
+sidebarTitle: "Key Concepts"
+description: "Learn the core terminology behind Trekton's data: MRFs, negotiated rates, allowed amounts, NPI, TIN, CPT/HCPCS codes, and facility types."
+---
+
+Trekton surfaces healthcare pricing and supply data drawn from payer Machine-Readable Files, commercial rate datasets, and facility registries. This page defines the terms you will encounter across the dashboard and API so you can interpret results accurately.
+
+## MRF (Machine-Readable File)
+
+A large JSON file that health plans post monthly under the federal Transparency in Coverage rule. MRFs contain negotiated rates and allowed amounts by procedure code, provider, and facility. Trekton ingests and normalizes these files so you can query them without parsing gigabytes of JSON.
+
+## Negotiated Rate
+
+The contracted amount a payer agrees to pay a provider for a specific service. This is distinct from the billed charge or the amount the patient pays. Trekton extracts negotiated rates from MRFs and payer rate files so you can compare them across networks.
+
+## Allowed Amount
+
+The maximum dollar amount a payer will reimburse for a covered service, which may differ from the negotiated rate depending on the plan and benefit design. Allowed amounts appear in MRF data and help you understand the ceiling a payer sets for a given procedure.
+
+## In-Network Rate
+
+A negotiated rate that applies when a member receives care from a provider or facility that participates in the payer's network. Trekton organizes in-network rates by NPI, TIN, and facility so you can benchmark within a specific network.
+
+## NPI (National Provider Identifier)
+
+A unique 10-digit number assigned by the Centers for Medicare and Medicaid Services (CMS) to individual providers and organizations. Trekton uses NPI to link rates, facilities, and supply metrics to specific providers.
+
+## TIN (Tax Identification Number)
+
+The federal tax ID for a provider organization or billing entity. A single TIN may cover multiple NPIs and facilities, so Trekton surfaces TIN-level aggregations when you want to analyze rates across an entire organization.
+
+## CPT/HCPCS codes
+
+Standardized procedure codes used to bill healthcare services. CPT (Current Procedural Terminology) codes cover physician and outpatient services, while HCPCS (Healthcare Common Procedure Coding System) codes include supplies, drugs, and additional services. Trekton indexes rates by CPT and HCPCS so you can query specific procedures.
+
+## Payer
+
+A health plan or insurer that negotiates rates with providers and publishes MRF data. Trekton covers commercial payers and aggregates their rate files so you can compare networks without downloading files from each payer separately.
+
+## Facility Type
+
+The category of healthcare site where a service is performed. Trekton covers hospitals, psychiatric facilities, rehab centers, and other provider types. Facility type is a key filter when benchmarking rates or analyzing supply and capacity because costs and availability vary significantly by setting.

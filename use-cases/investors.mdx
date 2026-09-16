@@ -1,0 +1,67 @@
+---
+title: "Evaluate Healthcare Markets with Trekton"
+sidebarTitle: "Investors"
+description: "Learn how investors use Trekton to size healthcare markets, analyze pricing power, track facility supply, and conduct M&A due diligence with machine-readable pricing data."
+---
+
+Trekton turns machine-readable pricing files and facility data into queryable intelligence that investors use to evaluate healthcare markets, compare assets, and spot consolidation trends. This page explains how private equity, venture capital, and healthcare strategists apply Trekton across four common workflows.
+
+<CardGroup cols={2}>
+  <Card title="Market Sizing" icon="chart-pie">
+    Estimate addressable spend by geography and specialty using negotiated rate volumes and procedure frequency.
+  </Card>
+
+  <Card title="Pricing Power Analysis" icon="scale">
+    Compare rate spreads across commercial payers to identify networks with strong or weak negotiating positions.
+  </Card>
+
+  <Card title="Supply & Consolidation" icon="building">
+    Track facility counts, bed capacity, and ownership changes across hospitals, psychiatric facilities, and rehab centers.
+  </Card>
+
+  <Card title="M&A Due Diligence" icon="clipboard-check">
+    Benchmark target facility rates and supply metrics against local market peers before a transaction.
+  </Card>
+</CardGroup>
+
+## Market sizing by geography and specialty
+
+Trekton ingests machine-readable files (MRFs) that contain negotiated rates by procedure code, NPI, and TIN. You can aggregate this data to estimate total commercial spend in a metro area or state for a specific specialty or procedure family.
+
+For example, query rates for a set of orthopedic CPT codes within a target ZIP radius, then multiply by procedure volume assumptions to build a bottom-up market model. Because MRFs are posted monthly, you can refresh the model as new data becomes available.
+
+<Note>
+  Trekton does not include patient volume. Combine Trekton rate data with your own volume assumptions or public utilization data for full market sizing.
+</Note>
+
+## Pricing power analysis
+
+Use Trekton to compare the spread of negotiated rates for the same procedure code across multiple payers at the same facility or within the same market. A wide spread suggests one payer has stronger negotiating leverage; a narrow spread suggests rate parity.
+
+You can also compare in-network allowed amounts against out-of-network benchmarks where available. This helps you assess whether a provider group or facility has pricing power that is sustainable or at risk during contract renewals.
+
+## Facility supply and consolidation trends
+
+Trekton maps facilities across hospitals, psychiatric facilities, and rehab centers with identifiers including NPI and TIN. You can:
+
+- Count facilities by type in a given geography over time
+- Track ownership changes by watching TIN groupings
+- Correlate capacity metrics with rate trends
+
+<Warning>
+  Ownership and TIN mappings can lag behind real-world transactions. Use Trekton as a directional signal and confirm with primary sources before making investment decisions.
+</Warning>
+
+## M&A due diligence
+
+When evaluating a target facility or provider group, pull its negotiated rates from Trekton and compare them to local market benchmarks. Key questions to answer:
+
+1. Are the target's rates above or below the local median for its top procedure codes?
+2. Which payers drive the target's revenue, and how do those payer rates compare to the market?
+3. Is the target in a market with rising or falling facility supply?
+
+Export the comparison data to share with your deal team or include in investment committee materials.
+
+<Tip>
+  Start with the target's top five CPT codes by estimated revenue. Those codes usually drive the majority of rate variance and are the fastest way to surface red flags.
+</Tip>

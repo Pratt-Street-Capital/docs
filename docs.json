@@ -1,7 +1,7 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "name": "Walker Health Services",
-  "theme": "almond",
+  "name": "Trekton",
+  "theme": "aspen",
   "colors": {
     "primary": "#ef7025",
     "light": "#eec9bc",
@@ -11,76 +11,53 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Help Center",
+        "tab": "Guide",
         "groups": [
           {
-            "group": "Getting Started",
+            "group": "Get Started",
             "pages": [
               "introduction",
-              "getting-started/onboarding",
-              "getting-started/emr-integration"
+              "get-started/quickstart",
+              "get-started/key-concepts"
             ]
           },
           {
-            "group": "Medical Billing",
+            "group": "Data",
             "pages": [
-              "billing/overview",
-              "billing/claims-submission",
-              "billing/denial-management",
-              "billing/payment-posting"
+              "data/mrf-pricing",
+              "data/payers",
+              "data/facilities",
+              "data/supply-insights"
             ]
           },
           {
-            "group": "Utilization Review",
+            "group": "Use Cases",
             "pages": [
-              "utilization-review/overview",
-              "utilization-review/medical-necessity",
-              "utilization-review/prior-authorization",
-              "utilization-review/case-review"
-            ]
-          },
-          {
-            "group": "Credentialing",
-            "pages": [
-              "credentialing/overview",
-              "credentialing/provider-enrollment",
-              "credentialing/recredentialing"
-            ]
-          },
-          {
-            "group": "Reporting & Insights",
-            "pages": [
-              "reporting/dashboard",
-              "reporting/billing-reports",
-              "reporting/revenue-analytics"
+              "use-cases/investors",
+              "use-cases/billing-companies",
+              "use-cases/transparency-research"
             ]
           }
         ]
       },
       {
-        "tab": "Support",
+        "tab": "API Reference",
         "groups": [
           {
-            "group": "FAQs",
+            "group": "Overview",
             "pages": [
-              "support/faq-billing",
-              "support/faq-utilization-review",
-              "support/faq-credentialing"
+              "api-reference/introduction",
+              "api-reference/authentication",
+              "api-reference/errors"
             ]
           },
           {
-            "group": "Troubleshooting",
+            "group": "Endpoints",
             "pages": [
-              "support/claim-rejections",
-              "support/authorization-issues",
-              "support/emr-sync-issues"
-            ]
-          },
-          {
-            "group": "Contact & Escalation",
-            "pages": [
-              "support/contact",
-              "support/escalation-process"
+              "api-reference/endpoints/rates",
+              "api-reference/endpoints/payers",
+              "api-reference/endpoints/facilities",
+              "api-reference/endpoints/supply"
             ]
           }
         ]

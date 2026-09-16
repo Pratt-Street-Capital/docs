@@ -1,0 +1,35 @@
+---
+title: "Trekton Facility Dataset: Hospitals and Post-Acute Care"
+sidebarTitle: "Facilities"
+description: "Browse Trekton's facility dataset covering hospitals, psychiatric facilities, rehab centers, and post-acute providers with NPI, TIN, bed count, and payer relationships."
+---
+
+Trekton maintains a comprehensive facility dataset that links provider locations to payer networks and negotiated rates. This page describes the facility types Trekton covers, the fields available per facility, and how the data connects to payer and pricing information.
+
+## Facility types covered
+
+Trekton includes the following facility types in its dataset:
+
+- **Hospitals**: acute care and specialty hospitals
+- **Psychiatric facilities**: inpatient and residential behavioral health providers
+- **Rehabilitation centers**: inpatient rehab facilities and skilled nursing rehab units
+- **Other post-acute settings**: long-term care hospitals and similar providers
+
+## Available fields
+
+Each facility record contains identifiers, location data, operational details, and payer relationships.
+
+| Field | Description |
+| --- | --- |
+| NPI | National Provider Identifier for the facility |
+| TIN | Tax Identification Number for the billing entity |
+| Address | Street, city, state, and ZIP code |
+| Facility type | Hospital, psychiatric, rehab, or post-acute |
+| Bed count | Licensed bed count where publicly available |
+| Payer relationships | Linked payers with negotiated rates for this facility |
+
+<Note>
+  Bed count is provided where publicly available and may not be present for all facility types or records.
+</Note>
+
+You can link facility data to negotiated rates through the [MRF Pricing](/data/mrf-pricing) dataset and identify which payers contract with a given facility through the [Payers](/data/payers) dataset.

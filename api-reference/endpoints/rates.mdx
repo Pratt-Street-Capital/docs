@@ -1,0 +1,149 @@
+---
+title: "GET /v1/rates - Negotiated Rate Endpoint"
+sidebarTitle: "GET /rates"
+description: "Retrieve negotiated healthcare rates by CPT/HCPCS code from Trekton's MRF dataset. Filter by state, payer, NPI, and paginate through results."
+---
+
+Trekton's negotiated rates endpoint lets you query machine-readable file (MRF) pricing data that health plans publish under the Transparency in Coverage rule. Use this endpoint to look up rates by procedure code and optionally narrow results by geography, payer, or provider.
+
+## HTTP Request
+
+```http
+GET https://api.trekton.health/v1/rates
+```
+
+## Query Parameters
+
+<ParamField query="cpt" type="string" required>
+  A CPT or HCPCS procedure code to filter rates by. Example: `99213`.
+</ParamField>
+
+<ParamField query="state" type="string">
+  Two-letter US state code to limit results to a specific state. Example: `CA`.
+</ParamField>
+
+<ParamField query="payer_id" type="string">
+  Filter to a specific commercial payer by its Trekton payer identifier.
+</ParamField>
+
+<ParamField query="npi" type="string">
+  Filter to a specific provider by National Provider Identifier (10-digit NPI).
+</ParamField>
+
+<ParamField query="limit" default="50" type="integer">
+  Number of results to return per page. Maximum is `500`.
+</ParamField>
+
+<ParamField query="cursor" type="string">
+  Pagination cursor from a previous response's `next_cursor` to fetch the next page of results.
+</ParamField>
+
+## Response Fields
+
+<ResponseField name="rates" type="array">
+  Array of negotiated rate records matching the query.
+
+  <Expandable title="Rate object">
+    <ResponseField name="payer_id" type="string">
+      Trekton identifier for the commercial payer.
+    </ResponseField>
+
+    <ResponseField name="payer_name" type="string">
+      Display name of the payer.
+    </ResponseField>
+
+    <ResponseField name="npi" type="string">
+      National Provider Identifier for the provider or facility.
+    </ResponseField>
+
+    <ResponseField name="tin" type="string">
+      Tax Identification Number associated with the billing entity.
+    </ResponseField>
+
+    <ResponseField name="cpt" type="string">
+      CPT or HCPCS procedure code for the rate.
+    </ResponseField>
+
+    <ResponseField name="negotiated_rate" type="number">
+      The negotiated dollar amount or percentage, depending on `rate_type`.
+    </ResponseField>
+
+    <ResponseField name="rate_type" type="string">
+      How the rate is expressed: `fee-schedule`, `percentage`, or `per-diem`.
+    </ResponseField>
+
+    <ResponseField name="plan_name" type="string">
+      Name of the specific health plan within the payer.
+    </ResponseField>
+
+    <ResponseField name="effective_date" type="string">
+      ISO 8601 date when the negotiated rate takes effect.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="next_cursor" type="string">
+  Pass this value as the `cursor` query parameter to retrieve the next page. Omitted when there are no more results.
+</ResponseField>
+
+## Examples
+
+<CodeGroup>
+
+```bash curl
+curl -G "https://api.trekton.health/v1/rates" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -d "cpt=99213" \
+  -d "state=CA" \
+  -d "limit=10"
+```
+
+```python Python
+import requests
+
+url = "https://api.trekton.health/v1/rates"
+headers = {"Authorization": "Bearer YOUR_API_KEY"}
+params = {
+    "cpt": "99213",
+    "state": "CA",
+    "limit": 10
+}
+
+response = requests.get(url, headers=headers, params=params)
+data = response.json()
+print(data)
+```
+
+```javascript JavaScript
+const url = new URL("https://api.trekton.health/v1/rates");
+url.searchParams.set("cpt", "99213");
+url.searchParams.set("state", "CA");
+url.searchParams.set("limit", "10");
+
+fetch(url, {
+  headers: { Authorization: "Bearer YOUR_API_KEY" }
+})
+  .then((res) => res.json())
+  .then((data) => console.log(data));
+```
+
+```json Response
+{
+  "rates": [
+    {
+      "payer_id": "payer_abc123",
+      "payer_name": "Example Health Plan",
+      "npi": "1234567890",
+      "tin": "12-3456789",
+      "cpt": "99213",
+      "negotiated_rate": 125.0,
+      "rate_type": "fee-schedule",
+      "plan_name": "PPO Gold",
+      "effective_date": "2024-01-01"
+    }
+  ],
+  "next_cursor": "eyJjdXJzb3IiOjEwfQ=="
+}
+```
+
+</CodeGroup>

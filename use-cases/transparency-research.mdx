@@ -1,0 +1,45 @@
+---
+title: "Get Started with Healthcare Price Transparency Data"
+sidebarTitle: "Transparency Research"
+description: "Learn what the Transparency in Coverage rule requires, why raw MRF files are hard to use, and how Trekton makes healthcare pricing data queryable for researchers and analysts."
+---
+
+Trekton helps researchers and analysts who are new to healthcare price transparency make sense of the massive, complex datasets that payers now publish under federal rules. This page explains what the Transparency in Coverage rule requires, why raw machine-readable files are difficult to work with directly, and how Trekton transforms those files into searchable, structured data you can query.
+
+## What the Transparency in Coverage rule requires
+
+The Transparency in Coverage rule, issued by the Centers for Medicare & Medicaid Services, requires most group health plans and health insurance issuers in the individual and group markets to disclose pricing information publicly. Key requirements include:
+
+- **In-network rates**: Negotiated rates between payers and providers, published as machine-readable files (MRFs) in a specified JSON format.
+- **Out-of-network allowed amounts**: Historical allowed amounts and billed charges for out-of-network services.
+- **Prescription drug pricing**: Pricing information for covered prescription drugs at the pharmacy level.
+
+These files must be updated monthly and remain publicly accessible without authentication. The goal is to give consumers, researchers, and businesses visibility into what different payers pay for the same services.
+
+## Why raw MRFs are hard to use
+
+Despite the rule's intent, raw MRF files present significant practical challenges:
+
+- **Size**: A single payer's monthly MRF can be tens or hundreds of gigabytes uncompressed. Downloading, storing, and parsing these files requires substantial infrastructure.
+- **Format inconsistencies**: While the rule specifies a JSON schema, payers implement it with varying degrees of fidelity. Nested arrays, inconsistent key naming, and missing fields are common.
+- **Identifier mapping**: Rates are tied to procedure codes (CPT/HCPCS), provider NPIs, and facility TINs. Correlating these across files from different payers requires normalization that most teams do not have built.
+- **Frequency**: Files update monthly, so any analysis built on a static download becomes stale quickly.
+
+For most researchers and analysts, the cost of building and maintaining an MRF ingestion pipeline exceeds the value of a single project.
+
+## How Trekton makes the data queryable
+
+Trekton ingests, normalizes, and indexes MRF data from commercial payers so you can query it through a web interface or REST API instead of parsing raw JSON files. What Trekton handles for you:
+
+- **Ingestion and storage**: Trekton downloads and stores MRF files at scale, so you do not need to manage multi-gigabyte downloads.
+- **Normalization**: Trekton maps varying payer implementations to a consistent schema, so CPT codes, NPIs, and TINs correlate across different sources.
+- **Search and filter**: Query by procedure code, geography, payer, facility type, or provider identifier. Results return structured rate records instead of nested JSON you must unpack yourself.
+- **Refresh cadence**: Trekton refreshes data as new MRFs are published, so your analysis stays current without manual re-downloads.
+
+<Tip>
+  If you are new to MRF data, start with a single procedure code (for example, a common CPT code) and one geography (for example, your state or a single metro area). This keeps result sets small and helps you learn the schema before scaling up to broader queries.
+</Tip>
+
+<Note>
+  Trekton covers hospitals, psychiatric facilities, and rehab centers. If your research focuses on a specific facility type, filter your queries early to reduce noise and speed up results.
+</Note>

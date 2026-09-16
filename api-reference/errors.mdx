@@ -1,0 +1,40 @@
+---
+title: "Trekton API Error Codes and Handling"
+sidebarTitle: "Errors"
+description: "Reference for Trekton API HTTP error codes including 400, 401, 403, 404, 429, and 500, with an example JSON error body and retry guidance."
+---
+
+Trekton uses standard HTTP status codes to indicate success or failure. When a request fails, the API returns a JSON error body with a machine-readable code, a human-readable message, and a request ID for support. This page lists every error code you may encounter and how to respond.
+
+## Error response format
+
+Every failed request returns a JSON object shaped like this:
+
+```json
+{
+  "error": {
+    "code": "invalid_api_key",
+    "message": "The provided API key is invalid or has been revoked."
+  },
+  "request_id": "req_9f8a7b6c5d4e3f2a"
+}
+```
+
+Include the `request_id` when you contact Walker Health support at **410.401.5861** or through the [contact page](https://walker.health/contact-us/).
+
+## HTTP status codes
+
+| Status | Meaning | What to do |
+| --- | --- | --- |
+| **400** | Bad Request | Check the request parameters and body for syntax or validation errors. |
+| **401** | Unauthorized | The API key is missing or invalid. Verify your `Authorization: Bearer` header. |
+| **403** | Forbidden | The key is valid but lacks permission for this resource. Contact support to adjust your scope. |
+| **404** | Not Found | The requested resource does not exist. Check identifiers and path parameters. |
+| **429** | Too Many Requests | You exceeded the rate limit. Wait for the `Retry-After` header value in seconds, then retry. |
+| **500** | Internal Server Error | A server-side problem occurred. Retry with exponential backoff, or contact support with the `request_id`. |
+
+## Retry guidance
+
+- **400, 401, 403, 404**: Do not retry automatically. Fix the request or credentials first.
+- **429**: Retry after the delay specified in the `Retry-After` response header.
+- **500**: Retry up to three times with exponential backoff (for example, 1s, 2s, 4s). If the error persists, contact support with the `request_id`.
