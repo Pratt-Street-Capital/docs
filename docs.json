@@ -39,28 +39,6 @@
             ]
           }
         ]
-      },
-      {
-        "tab": "API Reference",
-        "groups": [
-          {
-            "group": "Overview",
-            "pages": [
-              "api-reference/introduction",
-              "api-reference/authentication",
-              "api-reference/errors"
-            ]
-          },
-          {
-            "group": "Endpoints",
-            "pages": [
-              "api-reference/endpoints/rates",
-              "api-reference/endpoints/payers",
-              "api-reference/endpoints/facilities",
-              "api-reference/endpoints/supply"
-            ]
-          }
-        ]
       }
     ]
   },
