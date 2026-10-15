@@ -18,7 +18,8 @@
             "pages": [
               "introduction",
               "get-started/quickstart",
-              "get-started/key-concepts"
+              "get-started/key-concepts",
+              "get-started/claude-connector"
             ]
           },
           {

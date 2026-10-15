@@ -1,0 +1,61 @@
+---
+title: "Use Trekton in Claude"
+sidebarTitle: "Claude connector"
+description: "Ask Claude questions about facilities, state Medicaid rates, and area demographics, answered from Trekton's own data."
+---
+
+Trekton can answer questions inside Claude (Claude Desktop, claude.ai, and Claude Code) from Trekton's own data. You ask in plain language and Claude looks up the answer in Trekton.
+
+## What you can ask
+
+You can ask four kinds of question.
+
+- **Facilities near a place.** For example, "How many hospitals are within 5 miles of Baltimore?" Claude also opens an interactive panel with a map, a radius slider, facility type chips, a Medicaid tab, and a Demographics tab.
+- **One facility.** For example, "Tell me about Mainspring Recovery in Lynchburg, VA." You get the address, phone, ids, beds against peers, listed services, and sources.
+- **State Medicaid fee schedules by kind of care.** For example, "What does Virginia Medicaid pay for substance use treatment?" Pick one of four sets: substance use treatment, mental health, hospital, or office visits and common services. You can also ask for specific codes.
+- **Area demographics.** For example, "Who lives within 3 miles of there?" You get population, households, income, and the share of people on Medicaid or uninsured. Each new ring is a metered lookup.
+
+## Who can use it
+
+Anyone with an active Trekton account. You sign in with your Microsoft work account when you add the connector, the same sign-in as the app.
+
+## Add it in Claude Desktop or claude.ai
+
+<Steps>
+  <Step title="Open connector settings">
+    Open **Settings**, then **Connectors**, then click **Add custom connector**.
+  </Step>
+  <Step title="Enter the details">
+    Name it `Trekton`. Paste the connector URL and the OAuth client ID from your Trekton admin. Leave the client secret blank.
+  </Step>
+  <Step title="Connect">
+    Click **Connect**. Sign in with Microsoft if asked.
+  </Step>
+  <Step title="Approve">
+    On the Trekton consent screen, check that the address shown is claude.ai, then click **Approve**.
+  </Step>
+</Steps>
+
+<Note>
+  In Claude Code, run `claude mcp add --transport http --client-id <client id> --callback-port 33418 trekton <connector URL>`, then run `claude mcp login trekton`. The browser opens the same consent screen.
+</Note>
+
+## What Claude sees and keeps
+
+Your questions, such as place names, facility names, and codes, travel through the AI app you use. Trekton's data holds no patient information. The connector is read-only and can never change anything in your Trekton account.
+
+## How long it lasts
+
+A connection lasts 30 days. Then Claude asks you to sign in again. A Trekton admin can end every connection at once, and you sign in again on your next question. You can remove the connector from Claude's connector settings at any time.
+
+## Limits
+
+- "Near" is a circle around one point, up to 50 miles. It is not a city or county boundary.
+- Medicaid figures are state fee schedules. They are not negotiated prices and not a facility's own prices.
+- Answers are kept short: at most 50 facilities or 50 rate lines per question. Ask a narrower question to see others.
+- Each account can make 120 requests an hour and read 3,000 rows a day.
+- Commercial (insurer) rates are not available yet.
+
+<Tip>
+  Ask for a place with its state ("Baltimore, MD") or a ZIP code, and name the kind of care. The panel's slider and chips refine the results without a new question.
+</Tip>
